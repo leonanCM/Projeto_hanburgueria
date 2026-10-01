@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="img/logo-top.webp">
+<title>Top Burguer — Sabor que combina com você!</title>
+<meta name="description" content="Top Burguer: hambúrgueres, batata, bebidas e adicionais. Peça pelo site e finalize no WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1211; --bg2:#171b1a; --card:#1c211f;
+  --red:#f7ab1a; --red-d:#dd9200; --gold:#a86a00; --cream:#f5ecdc; --ink:#111;
+  --orange:#ffb45c; --muted:#b3a697; --brick:#d7362c;
+  --font-d:'Barlow Condensed',sans-serif; --font-b:'Barlow',sans-serif; --font-m:'Permanent Marker',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:var(--font-b);line-height:1.5}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.eyebrow{font-family:var(--font-d);font-weight:700;letter-spacing:.2em;font-size:.8rem;color:var(--red);text-transform:uppercase}
+h1,h2,h3{font-family:var(--font-d);text-transform:uppercase;line-height:.95}
+
+/* HEADER */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(15,18,17,.92);backdrop-filter:blur(8px);border-bottom:1px solid #ffffff10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-weight:800;font-size:1.5rem;letter-spacing:.02em;line-height:.85;text-transform:uppercase}
+.logo b{display:block;color:var(--red);font-family:var(--font-m);font-weight:400;font-size:1.05rem;text-transform:none;transform:rotate(-4deg);margin-top:2px}
+.logo-mark{width:44px;height:44px;border-radius:50%;background:var(--ink);border:2px solid var(--red);display:grid;place-items:center;font-size:1.4rem}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{font-family:var(--font-d);font-weight:600;letter-spacing:.12em;font-size:.8rem;text-transform:uppercase;padding:6px 0;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover,nav a.on{border-color:var(--red);color:#fff}
+.cart-btn{background:var(--red);color:#fff;font-family:var(--font-d);font-weight:700;letter-spacing:.1em;font-size:.85rem;text-transform:uppercase;padding:10px 20px;display:flex;align-items:center;gap:10px;clip-path:polygon(2% 8%,10% 0,30% 6%,55% 0,80% 6%,100% 0,98% 50%,100% 92%,75% 100%,50% 94%,25% 100%,0 92%,3% 50%);transition:.2s}
+.cart-btn:hover{background:var(--red-d)}
+.cart-btn .n{background:#fff;color:var(--red);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.8rem}
+.burger-menu{display:none;font-size:1.6rem}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:68px;overflow:hidden;
+  background:
+   radial-gradient(circle at 78% 42%,#f2a12a33 0,transparent 38%),
+   radial-gradient(circle at 12% 90%,#e31e2422 0,transparent 40%),
+   linear-gradient(120deg,#0b0d0c 0%,#1a1512 55%,#0f1211 100%)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 85% 20%,transparent 0 24px,#ffffff05 25px 26px);opacity:.7}
+.hero .lamp{position:absolute;top:0;width:2px;background:#ffffff22}
+.hero .lamp i{position:absolute;bottom:-14px;left:-14px;width:30px;height:30px;border-radius:50%;background:radial-gradient(#ffd98a,#f2a12a 50%,transparent 70%);filter:blur(1px);box-shadow:0 0 60px 20px #f2a12a55}
+.hero-in{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:center}
+.hero h1{font-size:clamp(4.5rem,11vw,9rem);font-weight:800;color:var(--cream);letter-spacing:-.01em;margin:14px 0 6px}
+.hero .marker{font-family:var(--font-m);color:var(--red);font-size:clamp(2rem,4.6vw,3.6rem);line-height:1;transform:rotate(-3deg);transform-origin:left;text-transform:uppercase;margin-bottom:26px}
+.hero p{max-width:440px;color:#d4cdc2;font-size:.98rem;margin-bottom:28px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{font-family:var(--font-d);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.9rem;padding:13px 26px;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-d);transform:translateY(-2px)}
+.btn-line{border:1px solid #ffffff88;color:#fff}
+.btn-line:hover{background:#fff;color:var(--ink)}
+.hero-art{position:relative;display:grid;place-items:center}
+.hero-art svg{width:min(640px,100%);filter:drop-shadow(0 40px 50px #000a);animation:float 6s ease-in-out infinite}
+.hero-art img{width:100%;border-radius:12px}
+.hero-art .chalk{position:absolute;right:0;top:0;font-family:var(--font-m);color:#ffffff30;font-size:1.6rem;text-align:right;line-height:1.1;transform:rotate(-5deg);text-transform:uppercase}
+@keyframes float{50%{transform:translateY(-14px) rotate(-1deg)}}
+
+/* torn edges */
+.torn{position:relative;height:36px;margin-top:-35px;z-index:2}
+.torn svg{width:100%;height:100%}
+
+/* SOBRE */
+.about{background:var(--cream);color:var(--ink);padding:70px 0 90px;position:relative;clip-path:polygon(0 2%,6% 0,14% 2.5%,24% .5%,36% 2%,48% 0,60% 2%,72% .5%,84% 2%,94% 0,100% 2%,100% 97%,92% 100%,80% 97.5%,66% 100%,52% 97.5%,38% 100%,24% 97%,10% 100%,0 97.5%)}
+.about-in{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:center}
+.about h2{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;margin:6px 0 10px}
+.about h2 + i{display:block;width:34px;height:3px;background:var(--red);margin-bottom:16px}
+.about p{font-size:.95rem;color:#3a3630;margin-bottom:22px;max-width:380px}
+.btn-dark{border:1px solid var(--ink);color:var(--ink);font-size:.78rem;padding:9px 18px}
+.btn-dark:hover{background:var(--ink);color:var(--cream)}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.feat svg{width:54px;height:54px;margin:0 auto 12px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:1.05rem;font-weight:700;letter-spacing:.06em;margin-bottom:6px}
+.feat p{font-size:.8rem;margin:0 auto;color:#5a544b}
+.stamp{position:absolute;right:6%;bottom:36px;font-family:var(--font-m);font-size:1.1rem;line-height:1;transform:rotate(-8deg);text-transform:uppercase}
+
+/* CARDÁPIO */
+.menu{background:var(--bg);padding:70px 0 90px;margin-top:-30px}
+.menu h2{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;color:var(--cream);margin:8px 0 30px}
+.menu-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:var(--font-d);font-weight:700;letter-spacing:.08em;font-size:.82rem;text-transform:uppercase;padding:9px 20px;border-radius:30px;color:var(--cream);transition:.2s}
+.tab.on{background:var(--red);color:#fff}
+.tab:not(.on):hover{background:#ffffff14}
+.arrows{display:flex;gap:10px}
+.arrows button{width:40px;height:40px;border-radius:50%;border:1px solid #ffffff33;font-size:1.1rem;transition:.2s}
+.arrows button:hover{background:var(--red);border-color:var(--red)}
+.full-link{font-family:var(--font-d);font-weight:700;letter-spacing:.08em;font-size:.78rem;text-transform:uppercase;color:#fff}
+.full-link span{color:var(--red)}
+.track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
+.card{flex:0 0 clamp(240px,26%,290px);scroll-snap-align:start;background:var(--card);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:.25s;border:1px solid #ffffff0d}
+.card:hover{transform:translateY(-6px);border-color:var(--red)}
+.card .pic{aspect-ratio:1;background:radial-gradient(circle at 50% 45%,#3a2a1a,#141110 70%);display:grid;place-items:center;padding:14px;position:relative}
+.card .pic svg,.card .pic img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 12px 14px #0009)}
+.card .tag{position:absolute;top:10px;left:10px;background:var(--red);font-family:var(--font-d);font-weight:700;font-size:.7rem;letter-spacing:.1em;padding:3px 9px;text-transform:uppercase}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1.5rem;font-weight:700;letter-spacing:.02em}
+.card p{font-size:.82rem;color:var(--muted);flex:1}
+.card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.price{font-family:var(--font-d);font-weight:800;font-size:1.5rem;color:var(--orange)}
+.add{background:var(--red);color:#fff;font-family:var(--font-d);font-weight:700;letter-spacing:.08em;font-size:.8rem;padding:9px 16px;text-transform:uppercase;transition:.2s}
+.add:hover{background:var(--red-d)}
+
+/* GALERIA */
+.gallery{background:var(--bg2);padding:80px 0}
+.gallery h2,.unit h2,.contact h2{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;margin:8px 0 30px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:14px}
+.grid div{border-radius:6px;overflow:hidden;display:grid;place-items:center;position:relative}
+.grid div:nth-child(1){grid-column:span 2;grid-row:span 2}
+.grid div:nth-child(5){grid-column:span 2}
+.grid svg,.grid img{width:70%;height:90%;object-fit:contain}
+.grid div:nth-child(1) svg,.grid div:nth-child(1) img{width:60%}
+.grid .g1{background:radial-gradient(circle,#4a2a14,#120e0c)}
+.grid .g2{background:var(--red)}
+.grid .g3{background:var(--cream)}
+.grid .g4{background:radial-gradient(circle,#2b3a2a,#0e120e)}
+.grid .g5{background:linear-gradient(120deg,#f2a12a,#e31e24)}
+.grid .g6{background:radial-gradient(circle,#3a2a1a,#141110)}
+
+/* UNIDADE */
+.unit{padding:80px 0;background:var(--bg)}
+.unit-in{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:stretch}
+.info{display:grid;gap:18px;align-content:start}
+.info div{background:var(--card);border-left:4px solid var(--red);padding:18px 20px}
+.info h3{font-size:1.15rem;letter-spacing:.08em;color:var(--orange);margin-bottom:4px}
+.info p{color:#d4cdc2;font-size:.92rem}
+.map{min-height:320px;border-radius:8px;overflow:hidden;border:1px solid #ffffff14}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.6) invert(.9) contrast(.9)}
+
+/* CONTATO / FOOTER */
+.contact{background:var(--red);color:#fff;padding:70px 0;text-align:center;clip-path:polygon(0 4%,10% 0,22% 3%,36% 0,50% 3%,64% 0,78% 3%,90% 0,100% 4%,100% 100%,0 100%)}
+.contact h2{margin-bottom:14px}
+.contact p{max-width:520px;margin:0 auto 26px}
+.btn-wa{background:#fff;color:var(--red)}
+.btn-wa:hover{background:var(--ink);color:#fff}
+footer{background:#080a09;padding:26px 0;text-align:center;color:var(--muted);font-size:.85rem}
+.socials{display:flex;gap:18px;justify-content:center;margin-top:20px;font-family:var(--font-d);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:#000a;opacity:0;pointer-events:none;transition:.25s;z-index:90}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,100%);background:var(--bg2);z-index:100;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column;border-left:3px solid var(--red)}
+body.cart-open .overlay{opacity:1;pointer-events:auto}
+body.cart-open .drawer{transform:none}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid #ffffff14}
+.d-head h3{font-size:1.8rem;font-weight:800}
+.d-head button{font-size:1.6rem}
+.items{flex:1;overflow:auto;padding:14px 22px}
+.empty{color:var(--muted);text-align:center;margin-top:60px}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #ffffff0f}
+.item .th{width:56px;height:56px;background:#241d18;border-radius:6px;padding:4px}
+.item h4{font-family:var(--font-d);font-size:1.1rem;letter-spacing:.03em;text-transform:uppercase}
+.item small{color:var(--orange);font-weight:600}
+.qty{display:flex;align-items:center;gap:8px;margin-top:4px}
+.qty button{width:26px;height:26px;border-radius:50%;background:#ffffff14;line-height:1}
+.qty button:hover{background:var(--red)}
+.rm{color:var(--muted);font-size:1.1rem}
+.rm:hover{color:var(--red)}
+.d-foot{padding:18px 22px;border-top:1px solid #ffffff14;display:grid;gap:10px}
+.d-foot input,.d-foot select,.d-foot textarea{width:100%;background:var(--bg);border:1px solid #ffffff22;color:var(--cream);padding:10px 12px;font:inherit;font-size:.9rem;border-radius:4px}
+.d-foot input:focus,.d-foot select:focus,.d-foot textarea:focus{outline:2px solid var(--red)}
+.row{display:flex;justify-content:space-between;font-family:var(--font-d);font-size:1.3rem;font-weight:700;text-transform:uppercase}
+.row span:last-child{color:var(--orange)}
+.finish{background:#25d366;color:#0a2a15;justify-content:center;width:100%;font-size:1rem;padding:15px}
+.finish:hover{background:#1ebe5a}
+.finish:disabled{opacity:.4;cursor:not-allowed}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--cream);color:var(--ink);font-weight:600;padding:12px 22px;border-radius:30px;z-index:120;transition:.3s}
+.toast.show{transform:translate(-50%,0)}
+
+/* ===== hero com foto de fundo ===== */
+.hero{background:
+  linear-gradient(90deg,rgba(8,9,9,.92) 0%,rgba(8,9,9,.72) 30%,rgba(8,9,9,.15) 58%,rgba(8,9,9,.25) 100%),
+  linear-gradient(180deg,rgba(8,9,9,.75) 0,transparent 22%),
+  url("img/hero.webp") 62% center/cover no-repeat,#0b0d0c}
+.hero::before,.hero .lamp,.hero-art{display:none}
+.hero-in{grid-template-columns:1fr;padding:40px 0 60px}
+.hero h1{text-shadow:0 6px 40px #000a}
+.hero p{color:#e6dfd3;text-shadow:0 2px 12px #000}
+@media(max-width:920px){
+  .hero{align-items:flex-end;min-height:100svh;background:
+    linear-gradient(180deg,rgba(8,9,9,.7) 0,transparent 25%,rgba(8,9,9,.55) 55%,rgba(8,9,9,.96) 100%),
+    url("img/hero.webp") 68% top/auto 62% no-repeat,#0b0d0c}
+  .hero-in{padding-top:0}
+}
+/* ===== identidade Du Balsas (amarelo + preto) ===== */
+.logo-mark{width:62px;height:62px;border-radius:50%;overflow:hidden;background:#f6d04a;border:0;box-shadow:0 0 0 2px #f6d04a66,0 6px 20px #0008}
+.logo-mark img{width:100%;height:100%;object-fit:cover;transform:scale(1.14)}
+.logo{font-size:1.4rem;gap:12px}
+.nav{height:82px}
+header.scrolled .nav{height:70px}
+.hero{padding-top:82px}
+.hero h1{font-size:clamp(3.6rem,9vw,7.6rem)}
+.hero .marker{color:var(--red);text-shadow:0 4px 24px #000}
+.btn-red,.cart-btn,.add,.tab.on,.card .tag,.finish:hover{color:var(--ink)}
+.cart-btn .n{background:var(--ink);color:var(--red)}
+.btn-red:hover,.cart-btn:hover,.add:hover{color:var(--ink)}
+.arrows button:hover,.qty button:hover,.f-grid .socials a:hover{color:var(--ink)}
+.about h2 + i{background:var(--gold)}
+.feat svg{stroke:var(--gold)}
+.about .eyebrow{color:var(--gold)!important}
+.btn-dark:hover{color:var(--red)}
+.contact{background:var(--red);color:var(--ink)}
+.contact .eyebrow{color:var(--ink)!important}
+.btn-wa{background:var(--ink);color:var(--red)}
+.btn-wa:hover{background:#fff;color:var(--ink)}
+.stamp{color:var(--ink)}
+.grid .g2{background:var(--red)}
+@media(max-width:920px){nav{top:82px}.logo-mark{width:52px;height:52px}.nav{height:72px}nav{top:72px}.hero{padding-top:72px}}
+/* ===== carrinho flutuante ===== */
+.float-cart{position:fixed;right:20px;bottom:20px;z-index:70;display:flex;align-items:center;gap:12px;background:var(--red);color:var(--ink);padding:10px 20px 10px 12px;border-radius:40px;box-shadow:0 10px 30px #000a;font-family:var(--font-d);transition:transform .25s,box-shadow .25s,opacity .25s}
+.float-cart:hover{transform:translateY(-3px);box-shadow:0 14px 34px #000c}
+.fc-ico{position:relative;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--red);display:grid;place-items:center}
+.fc-ico .ico{width:22px;height:22px}
+.fc-ico i{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#fff;color:var(--ink);font-style:normal;font-weight:800;font-size:.8rem;display:grid;place-items:center}
+.fc-txt{display:flex;flex-direction:column;line-height:1.05;text-align:left}
+.fc-txt small{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.75}
+.fc-txt b{font-size:1.35rem;font-weight:800}
+.float-cart.bump{animation:bump .5s}
+@keyframes bump{30%{transform:scale(1.14) rotate(-3deg)}60%{transform:scale(.97)}}
+body.cart-open .float-cart{opacity:0;pointer-events:none;transform:translateY(20px)}
+.wa-float{left:auto;right:20px;bottom:88px;width:48px;height:48px}
+.wa-float svg{width:26px;height:26px}
+@media(max-width:600px){.float-cart{left:16px;right:16px;bottom:14px;justify-content:center;padding:8px 16px 8px 10px}.wa-float{bottom:84px;right:16px}}
+/* ===== refinamentos profissionais ===== */
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+header{transition:.3s}
+header.scrolled{background:rgba(10,12,11,.97);box-shadow:0 8px 30px #0008}
+header.scrolled .nav{height:58px}
+.logo-mark{background:none;border:0;width:auto;height:auto;display:block}
+.logo-mark svg{width:46px;height:46px}
+.ico{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hero-art .photo{width:min(660px,100%);aspect-ratio:1/1;object-fit:cover;border-radius:50%;-webkit-mask-image:radial-gradient(circle,#000 52%,transparent 71%);mask-image:radial-gradient(circle,#000 52%,transparent 71%);filter:saturate(1.1) contrast(1.05);animation:float 7s ease-in-out infinite}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.hero-stats{display:flex;gap:34px;margin-top:38px;padding-top:24px;border-top:1px solid #ffffff18;max-width:440px}
+.hero-stats b{display:block;font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--cream);line-height:1}
+.hero-stats span{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card .pic.photo{padding:0;background:#141110}
+.card .pic.photo img{object-fit:cover;filter:none;transition:transform .6s}
+.card:hover .pic.photo img{transform:scale(1.07)}
+.card .pic.photo::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,#1c211f)}
+.card .tag{z-index:2}
+.card{box-shadow:0 10px 30px #0004}
+.item .th.photo{padding:0;overflow:hidden}
+.item .th.photo img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.grid img.cover{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.grid div:hover img.cover{transform:scale(1.08)}
+.grid div::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#000a);opacity:.7;pointer-events:none}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.sec-head{display:flex;align-items:center;gap:14px}
+.sec-head::before{content:"";width:34px;height:2px;background:var(--red)}
+.info div{transition:.25s}.info div:hover{transform:translateX(6px);background:#232a27}
+.info h3{display:flex;align-items:center;gap:8px}
+footer{background:#080a09;padding:60px 0 24px;text-align:left;border-top:3px solid var(--red)}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid #ffffff14}
+.f-grid h4{font-family:var(--font-d);text-transform:uppercase;letter-spacing:.14em;font-size:.95rem;color:var(--cream);margin-bottom:14px}
+.f-grid a,.f-grid p{display:block;color:var(--muted);font-size:.9rem;margin-bottom:8px;transition:.2s}
+.f-grid a:hover{color:var(--red)}
+.f-grid .logo{color:var(--cream)}
+.f-bottom{padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#6f6a63;font-size:.8rem}
+.socials{margin-top:24px;justify-content:flex-start}
+.f-grid .socials a{width:44px;height:44px;border:1px solid #ffffff44;border-radius:50%;display:grid;place-items:center;transition:.2s;margin:0;color:var(--cream)}
+.f-grid .socials a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.wa-float{position:fixed;left:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px #0008;transition:.2s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media(max-width:920px){.f-grid{grid-template-columns:1fr 1fr}.hero-stats{gap:22px}}
+/* ===== correções finais: logo + fundo com foto ===== */
+.logo .logo-mark{width:auto;height:62px;flex:none;border-radius:10px;overflow:hidden;background:#3a2419;box-shadow:0 0 0 2px #f0973a88,0 6px 20px #0008}
+.logo .logo-mark img{width:auto;height:100%;object-fit:contain;transform:none}
+.logo b{color:var(--red)}
+/* paleta Top Burguer: preto + amarelo-ouro + branco */
+:root{--bg:#0d0c0a;--bg2:#15130f;--card:#1c1914;--orange:#ffc93c;--brick:#e8590c}
+.logo .logo-mark{height:66px;width:66px;border-radius:50%;background:#000;box-shadow:0 0 0 2px #f7ab1a99,0 6px 20px #000a}
+.logo .logo-mark img{width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+.hero h1{color:#fff}
+.hero .marker{color:var(--red)}
+.card .tag{background:var(--brick);color:#fff}
+.card:hover{border-color:var(--red)}
+.price{color:var(--orange)}
+.hero .eyebrow{color:var(--orange)}
+.contact{background:linear-gradient(120deg,#ffc93c 0%,#f7ab1a 50%,#e8830c 100%);color:var(--ink)}
+.contact h2,.contact p{color:#1a120d}
+.about{background:var(--cream)}
+.drawer{border-left-color:var(--red)}
+footer{border-top-color:var(--red)}
+.f-grid a.logo{display:inline-flex;margin-bottom:16px}
+.f-grid .logo .logo-mark{display:inline-block;width:120px;height:120px}
+.f-grid .logo>span:last-child{display:none}
+body .wa-float{left:auto;right:20px;bottom:88px;width:48px;height:48px}
+/* a foto do hambúrguer vira o fundo do site inteiro (fixa, escurecida e desfocada) */
+html{background:#0b0d0c}
+body{background:transparent}
+body::before{content:"";position:fixed;inset:-20px;z-index:-1;
+  background:linear-gradient(180deg,rgba(20,12,6,.55),rgba(10,8,6,.75)),url("img/hero.webp") 60% center/cover no-repeat;
+  filter:blur(7px) brightness(.55) saturate(1.25)}
+.hero::after{background:linear-gradient(transparent,rgba(12,9,7,.55))}
+.menu{background:linear-gradient(180deg,rgba(12,9,7,.55),rgba(12,9,7,.35))}
+.gallery{background:rgba(18,13,9,.45)}
+.unit{background:linear-gradient(180deg,rgba(12,9,7,.35),rgba(12,9,7,.6))}
+.card{background:rgba(28,24,20,.82);backdrop-filter:blur(6px)}
+.info div{background:rgba(28,24,20,.8);backdrop-filter:blur(6px)}
+.info div:hover{background:rgba(40,33,26,.9)}
+footer{background:rgba(8,7,6,.94)}
+.grid div img.cover{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+.grid div:nth-child(5){grid-column:auto}
+.grid div:nth-child(6){grid-column:1/-1}
+@media(max-width:920px){.logo .logo-mark{width:52px;height:52px}.logo{font-size:1.15rem}}
+@media(max-width:600px){.logo>span:last-child{display:none}}
+@media(max-width:600px){body .wa-float{right:16px;bottom:84px}}
+/* RESPONSIVO */
+@media(max-width:920px){
+  nav{position:fixed;top:68px;left:0;right:0;background:var(--bg);padding:10px 20px 22px;transform:translateY(-130%);transition:.3s;border-bottom:2px solid var(--red);z-index:-1}
+  nav.open{transform:none}
+  nav ul{flex-direction:column;gap:6px}
+  nav a{display:block;padding:12px 0}
+  .burger-menu{display:block}
+  .nav{gap:12px}
+  .cart-btn{margin-left:auto}
+  .hero-in,.about-in,.unit-in{grid-template-columns:1fr}
+  .hero{padding-bottom:40px}
+  .hero-art{order:-1;margin-top:20px}
+  .feats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .grid div:nth-child(1){grid-column:span 2}
+  .stamp{display:none}
+  .card{flex-basis:70%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo"><span class="logo-mark"><img src="img/logo-top.webp" alt="Logo Top Burguer"></span><span>Top<b>Burguer</b></span></a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#inicio" class="on">Início</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#unidade">Unidade</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="cart-btn" id="openCart" aria-label="Abrir carrinho">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      Carrinho <span class="n" id="count">0</span>
+    </button>
+    <button class="burger-menu" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="lamp" style="left:22%;height:70px"><i></i></div>
+  <div class="lamp" style="left:58%;height:40px"><i></i></div>
+  <div class="lamp" style="left:88%;height:90px"><i></i></div>
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow">Mais que burgers.</span>
+      <h1>Top Burguer</h1>
+      <div class="marker">Sabor que combina<br>com você!</div>
+      <p>Hambúrgueres, batata, bebidas e adicionais feitos na hora, com ingredientes selecionados. Monte o seu pedido e receba em casa.</p>
+      <div class="btns">
+        <a href="#cardapio" class="btn btn-red"><svg class="ico" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3"/><circle cx="18.5" cy="17.5" r="3"/><path d="M8.5 17.5h7l-3-8h-4M15 6h3l1.5 5"/></svg> Peça agora</a>
+        <a href="#cardapio" class="btn btn-line">Ver o cardápio</a>
+      </div>
+      <div class="hero-stats"><div><b>100%</b><span>Na brasa</span></div><div><b>+30</b><span>Combinações</span></div><div><b>4.9★</b><span>Avaliação</span></div></div>
+    </div>
+    <div class="hero-art">
+      <div class="chalk">Burgers<br>People<br>Happiness<br>Always</div>
+      <!-- Para usar foto real: troque o SVG por <img src="img/hero.png" alt="Calango Burger"> -->
+      <div id="heroBurger"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="wrap about-in">
+    <div>
+      <span class="eyebrow" style="color:var(--red)">Nossa história</span>
+      <h2>Top Burguer<br>é atitude!</h2><i></i>
+      <p>Nascemos da paixão por hambúrgueres e por comida bem feita. Aqui cada lanche é preparado na hora, com ingredientes de verdade e muita personalidade. O Top Burguer é sobre boa comida, boas companhias e um sabor que combina com você.</p>
+      <a href="#unidade" class="btn btn-dark">Conheça nossa história</a>
+    </div>
+    <div class="feats">
+      <div class="feat">
+        <svg viewBox="0 0 64 64"><path d="M12 26c0-10 9-16 20-16s20 6 20 16z"/><path d="M10 34c4 3 8-3 12 0s8-3 12 0 8-3 12 0 6-1 8 0"/><path d="M12 42h40"/><path d="M12 50c0 4 4 6 8 6h24c4 0 8-2 8-6z"/></svg>
+        <h3>Carne na brasa</h3><p>Feita na churrasqueira, no ponto certo.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 64 64"><path d="M8 40c0-16 11-26 24-26s24 10 24 26z"/><path d="M6 46h52M12 52h40"/><path d="M22 24l2 3M32 20v4M42 24l-2 3"/></svg>
+        <h3>Pão macio</h3><p>Pães artesanais e sempre frescos.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 64 64"><path d="M14 50C10 30 22 12 52 10c2 30-14 44-34 42"/><path d="M14 50C24 38 32 30 44 22"/></svg>
+        <h3>Ingredientes selecionados</h3><p>Qualidade em cada detalhe.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 64 64"><path d="M27 6h10v8l3 6v34a4 4 0 0 1-4 4H28a4 4 0 0 1-4-4V20l3-6z"/><path d="M24 30h16M24 42h16"/></svg>
+        <h3>Molho da casa</h3><p>Receita exclusiva Top Burguer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="stamp">Aqui<br>é mais<br>burger</div>
+</section>
+
+<!-- CARDÁPIO -->
+<section class="menu" id="cardapio">
+  <div class="wrap">
+    <span class="eyebrow sec-head">Nosso cardápio</span>
+    <h2>Escolha<br>seu favorito</h2>
+    <div class="menu-top">
+      <div class="tabs" id="tabs"></div>
+      <div class="arrows"><button id="prev" aria-label="Anterior">←</button><button id="next" aria-label="Próximo">→</button></div>
+      <a href="#cardapio" class="full-link">Ver cardápio completo <span>→</span></a>
+    </div>
+    <div class="track" id="track"></div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <span class="eyebrow sec-head">Galeria</span>
+    <h2>Sinta o clima</h2>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- UNIDADE -->
+<section class="unit" id="unidade">
+  <div class="wrap">
+    <span class="eyebrow sec-head">Unidade</span>
+    <h2>Venha nos visitar</h2>
+    <div class="unit-in">
+      <div class="info">
+        <div><h3><svg class="ico" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Endereço</h3><p>Rua Exemplo, 123 — Centro<br>Sua Cidade / UF</p></div>
+        <div><h3><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Horário</h3><p>Ter a Dom: 18h às 23h30<br>Segunda: fechado</p></div>
+        <div><h3><svg class="ico" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3"/><circle cx="18.5" cy="17.5" r="3"/><path d="M8.5 17.5h7l-3-8h-4M15 6h3l1.5 5"/></svg>Delivery</h3><p>Entregamos na região. Faça o pedido pelo carrinho e finalize no WhatsApp.</p></div>
+      </div>
+      <div class="map"><iframe loading="lazy" title="Mapa" src="https://www.google.com/maps?q=Brasil&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#fff">Contato</span>
+    <h2>Bateu a fome?</h2>
+    <p>Chame a gente no WhatsApp para pedidos, dúvidas ou eventos.</p>
+    <a class="btn btn-wa" id="waDirect" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><a href="#inicio" class="logo" style="margin-bottom:14px"><span class="logo-mark"><img src="img/logo-top.webp" alt="Logo Top Burguer"></span><span>Top<b>Burguer</b></span></a>
+        <p>Top Burguer — hambúrgueres, batata, bebidas e adicionais. Sabor que combina com você!</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg class="ico" viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 3 2.5 5 5.5 5"/></svg></a>
+        </div></div>
+      <div><h4>Navegação</h4><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre</a><a href="#galeria">Galeria</a><a href="#unidade">Unidade</a></div>
+      <div><h4>Horários</h4><p>Ter a Dom<br>18h às 23h30</p><p>Segunda: fechado</p></div>
+      <div><h4>Contato</h4><a href="#contato">WhatsApp</a><p>Rua Exemplo, 123<br>Centro — Sua Cidade</p></div>
+    </div>
+    <div class="f-bottom"><span>© <span id="yr"></span> Top Burguer. Todos os direitos reservados.</span><span>Beba com moderação. Aproveite sem pressa.</span></div>
+  </div>
+</footer>
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.900 1.200 2.200 1.300.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.900.9c.3.1.5.2.5.3.1.2.1.7-.1 1.300z"/></svg></a>
+
+<!-- CARRINHO -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" aria-label="Carrinho">
+  <div class="d-head"><h3>Seu pedido</h3><button id="closeCart" aria-label="Fechar">✕</button></div>
+  <div class="items" id="items"></div>
+  <div class="d-foot">
+    <input id="cName" placeholder="Seu nome" autocomplete="name">
+    <select id="cType">
+      <option value="Entrega">Entrega</option>
+      <option value="Retirada">Retirada no local</option>
+    </select>
+    <input id="cAddr" placeholder="Endereço completo (rua, número, bairro)">
+    <select id="cPay">
+      <option>Pix</option><option>Cartão</option><option>Dinheiro</option>
+    </select>
+    <textarea id="cObs" rows="2" placeholder="Observações (ex: sem cebola)"></textarea>
+    <div class="row"><span>Total</span><span id="total">R$ 0,00</span></div>
+    <button class="btn finish" id="finish" disabled><svg class="ico" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg> Finalizar no WhatsApp</button>
+  </div>
+</aside>
+<!-- carrinho flutuante: acompanha a rolagem -->
+<button class="float-cart" id="floatCart" aria-label="Abrir carrinho">
+  <span class="fc-ico"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><i id="fcCount">0</i></span>
+  <span class="fc-txt"><small>Seu pedido</small><b id="fcTotal">R$ 0,00</b></span>
+</button>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ CONFIGURAÇÃO — edite aqui ============ */
+const WHATSAPP = "5500000000000";   // DDI + DDD + número, só dígitos (ex: 5511999998888)
+const TAXA_ENTREGA = 0;             // coloque um valor (ex: 6) se cobrar entrega
+
+// Para usar fotos reais, adicione  img:"img/nome.png"  em cada produto.
+const IMG = id => 'img/'+id+'.jpg';
+const MENU = {
+  "Burgers":[
+    {img:IMG("b1"),n:"Top Classic",d:"Blend 160g na brasa, cheddar, bacon crocante e molho da casa.",p:32.9,tag:"Mais pedido",c:{bun:"#d98a3a",meat:"#3b2418",cheese:"#f2b62a",extra:"bacon"}},
+    {img:IMG("b7"),n:"Duplo Cheddar",d:"Dois smashes, muito cheddar derretido e maionese defumada.",p:38.9,c:{bun:"#d98a3a",meat:"#3b2418",cheese:"#f5a21a",extra:"double"}},
+    {img:IMG("b6"),n:"Top Pimenta",d:"Blend 160g, jalapeño, tomate, queijo e molho picante.",p:36.9,tag:"Picante",c:{bun:"#c9752a",meat:"#3b2418",cheese:"#f2b62a",extra:"jalapeno"}},
+    {img:IMG("bacon"),n:"Bacon Brabo",d:"Blend na brasa, muito bacon, cebola caramelizada e barbecue.",p:39.9,c:{bun:"#d98a3a",meat:"#4a2a1a",cheese:"#f2b62a",extra:"bacon"}},
+    {img:IMG("b5"),n:"Salada da Casa",d:"Blend 160g, alface, tomate, queijo prato e maionese verde.",p:30.9,c:{bun:"#e0983f",meat:"#3b2418",cheese:"#f7d24a",extra:"salad"}}
+  ],
+  "Porções":[
+    {img:IMG("p2"),n:"Batata Rústica",d:"Batata com casca, alho e ervas. Acompanha molho da casa.",p:24.9,kind:"fries"},
+    {img:IMG("p1"),n:"Batata Cheddar & Bacon",d:"Porção grande coberta de cheddar cremoso e bacon.",p:32.9,kind:"fries",tag:"Favorita"},
+    {img:IMG("p3"),n:"Onion Rings",d:"Anéis de cebola empanados e crocantes.",p:26.9,kind:"rings"}
+  ],
+  "Refrigerantes":[
+    {img:IMG("r1"),n:"Coca-Cola Lata",d:"350ml gelada.",p:6.5,kind:"can",col:"#c8102e"},
+    {n:"Guaraná Lata",d:"350ml gelada.",p:6.0,kind:"can",col:"#1f8a3a"},
+    {n:"Refrigerante 1L",d:"Consulte os sabores no pedido.",p:12.0,kind:"can",col:"#e08a1a"}
+  ],
+  "Sucos":[
+    {img:IMG("s1"),n:"Suco de Laranja",d:"Natural, 400ml.",p:9.9,kind:"cup",col:"#f39a1e"},
+    {n:"Limonada Suíça",d:"Cremosa e gelada, 400ml.",p:10.9,kind:"cup",col:"#c6d34a"},
+    {n:"Suco de Maracujá",d:"Natural, 400ml.",p:9.9,kind:"cup",col:"#f2c21e"}
+  ],
+  "Adicionais":[
+    {n:"Bacon extra",d:"Porção extra de bacon crocante no seu burger.",p:5.0,kind:"extra",col:"#a3221c"},
+    {n:"Cheddar extra",d:"Mais cheddar cremoso derretido.",p:4.0,kind:"extra",col:"#f7ab1a"},
+    {n:"Carne extra",d:"Mais um blend 160g na brasa.",p:9.0,kind:"extra",col:"#4a2a1a"},
+    {n:"Molho da casa",d:"Pote extra do nosso molho especial.",p:3.0,kind:"extra",col:"#c8741e"}
+  ]
+};
+const GALLERY_IMGS = ["b7","bacon2","b4","b1","b2","b6"];
+const GALLERY = [
+  ["g1",{bun:"#d98a3a",meat:"#3b2418",cheese:"#f2b62a",extra:"double"}],
+  ["g2",{bun:"#efe6da",meat:"#3b2418",cheese:"#f2b62a",extra:"bacon"}],
+  ["g3",{bun:"#d98a3a",meat:"#3b2418",cheese:"#f2b62a",extra:"jalapeno"}],
+  ["g4",{bun:"#d98a3a",meat:"#3b2418",cheese:"#f5d24a",extra:"salad"}],
+  ["g5",{bun:"#e9a24c",meat:"#3b2418",cheese:"#f2b62a",extra:"double"}],
+  ["g6",{bun:"#d98a3a",meat:"#4a2a1a",cheese:"#f5a21a",extra:"bacon"}]
+];
+/* ==================================================== */
+
+const $=s=>document.querySelector(s), brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+
+/* ---------- ilustrações SVG (substituíveis por fotos) ---------- */
+function burgerSVG(c){
+  const bacon = c.extra==="bacon" ? `<path d="M50 118c14-10 26 10 40 0s26 10 40 0 26 10 40 0 26 10 40 0 20 6 30 0v14c-10 6-20 0-30 0s-26 10-40 0-26 10-40 0-26 10-40 0-26 10-40 0z" fill="#a3221c"/><path d="M60 122c12-6 22 8 34 0s24 8 36 0" stroke="#e06a55" stroke-width="3" fill="none"/>`:"";
+  const jal = c.extra==="jalapeno" ? [70,120,175,225].map(x=>`<circle cx="${x}" cy="118" r="12" fill="#5fa03a"/><circle cx="${x}" cy="118" r="5" fill="#cfe58a"/>`).join("")+`<circle cx="95" cy="112" r="9" fill="#d8321f"/><circle cx="200" cy="112" r="9" fill="#d8321f"/>`:"";
+  const salad = c.extra==="salad" ? `<path d="M40 112c10 14 20-6 30 4s20-8 30 2 20-8 30 2 20-8 30 2 20-8 30 2 20-8 30 2 20-6 30 4v12H40z" fill="#5fae3a"/><rect x="70" y="120" width="150" height="10" rx="5" fill="#d8321f"/>`:"";
+  const dbl = c.extra==="double" ? `<rect x="42" y="150" width="216" height="26" rx="13" fill="${c.meat}"/><path d="M40 170c12 10 20 34 32 20s18 24 28 8 20 26 30 8 22 22 32 6 22 20 32 4 22 18 34 6 18 18 32 4c8-8 8-16 10-20v-14H40z" fill="${c.cheese}"/>`:"";
+  return `<svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hambúrguer">
+  <ellipse cx="150" cy="240" rx="120" ry="12" fill="#0007"/>
+  <path d="M38 118C38 50 90 14 150 14s112 36 112 104z" fill="${c.bun}"/>
+  <path d="M60 60c20-30 60-38 90-38" stroke="#ffffff55" stroke-width="7" stroke-linecap="round" fill="none"/>
+  ${[[100,50],[145,38],[190,52],[120,78],[170,80],[218,84],[75,86]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="7" ry="3.5" fill="#f7e3b5" transform="rotate(${x%40-20} ${x} ${y})"/>`).join("")}
+  <rect x="34" y="112" width="232" height="22" rx="11" fill="#7a9c3a"/>
+  ${salad}
+  <rect x="36" y="128" width="228" height="34" rx="17" fill="${c.meat}"/>
+  <path d="M34 150c10 12 20 30 30 16s18 22 28 6 22 24 32 6 20 22 30 4 22 20 32 4 22 16 32 2 18 18 28 4c6-8 8-14 12-18v-10z" fill="${c.cheese}"/>
+  ${dbl}${bacon}${jal}
+  <path d="M38 ${c.extra==="double"?186:170}h224c0 26-14 44-40 44H78c-26 0-40-18-40-44z" fill="${c.bun}"/>
+  <rect x="38" y="${c.extra==="double"?184:168}" width="224" height="10" rx="5" fill="#00000030"/>
+  </svg>`;
+}
+function otherSVG(k,col){
+  if(k==="fries") return `<svg viewBox="0 0 200 200"><path d="M50 90l14 90h72l14-90z" fill="#e31e24"/><path d="M60 100h80" stroke="#fff" stroke-width="6"/>${[60,78,96,114,132,70,105,124].map((x,i)=>`<rect x="${x}" y="${20+(i%3)*10}" width="12" height="${75-(i%3)*8}" rx="4" fill="#f4c542" transform="rotate(${(i-4)*4} ${x} 90)"/>`).join("")}</svg>`;
+  if(k==="rings") return `<svg viewBox="0 0 200 200">${[[70,80],[130,80],[100,125]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="34" fill="none" stroke="#d99a3a" stroke-width="16"/><circle cx="${x}" cy="${y}" r="34" fill="none" stroke="#f0c070" stroke-width="4" stroke-dasharray="6 10"/>`).join("")}</svg>`;
+  if(k==="extra") return `<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="62" fill="${col}" stroke="#f7ab1a" stroke-width="6"/><path d="M100 72v56M72 100h56" stroke="#fff" stroke-width="12" stroke-linecap="round"/></svg>`;
+  if(k==="can") return `<svg viewBox="0 0 200 200"><rect x="66" y="26" width="68" height="150" rx="10" fill="${col}"/><rect x="66" y="44" width="68" height="10" fill="#0003"/><ellipse cx="100" cy="26" rx="34" ry="7" fill="#cfd3d6"/><path d="M84 96c10-14 22 14 32 0" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`;
+  return `<svg viewBox="0 0 200 200"><path d="M62 40h76l-10 130H72z" fill="${col}"/><path d="M62 40h76l-3 30H65z" fill="#fff3"/><path d="M104 40l22-30" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="76" cy="40" r="20" fill="${col}" stroke="#0003"/></svg>`;
+}
+const svgOf = p => p.c ? burgerSVG(p.c) : otherSVG(p.kind,p.col);
+/* se a foto não carregar, volta para a ilustração */
+window.fb = el => { const w=document.createElement("div"); w.innerHTML=decodeURIComponent(el.dataset.fb); el.parentElement.classList.remove("photo"); el.replaceWith(w.firstChild); };
+const pic = p => p.img ? `<img src="${p.img}" alt="${p.n}" loading="lazy" data-fb="${encodeURIComponent(svgOf(p))}" onerror="fb(this)">` : svgOf(p);
+
+/* ---------- hero / galeria ---------- */
+{const hs=burgerSVG({bun:"#d98a3a",meat:"#3b2418",cheese:"#f5a21a",extra:"bacon"}).replace("<svg ","<svg style=\"width:min(620px,100%)\" ");
+$("#heroBurger").innerHTML=`<img class="photo" src="${IMG("b1")}" alt="Hambúrguer Top Burguer" data-fb="${encodeURIComponent(hs)}" onerror="fb(this)">`;}
+$("#grid").innerHTML = GALLERY.map(([cl,c],i)=>`<div class="${cl}"><img class="cover" src="${IMG(GALLERY_IMGS[i])}" alt="Hambúrguer Top Burguer" loading="lazy" data-fb="${encodeURIComponent(burgerSVG(c))}" onerror="fb(this)"></div>`).join("");
+
+/* ---------- cardápio ---------- */
+let tab = Object.keys(MENU)[0];
+const tabs=$("#tabs"), track=$("#track");
+function renderTabs(){
+  tabs.innerHTML = Object.keys(MENU).map(t=>`<button class="tab ${t===tab?"on":""}" data-t="${t}">${t}</button>`).join("");
+}
+function renderCards(){
+  track.innerHTML = MENU[tab].map((p,i)=>`
+    <article class="card">
+      <div class="pic${p.img?" photo":""}">${p.tag?`<span class="tag">${p.tag}</span>`:""}${pic(p)}</div>
+      <div class="body"><h3>${p.n}</h3><p>${p.d}</p>
+        <div class="foot"><span class="price">${brl(p.p)}</span><button class="add" data-i="${i}">+ Adicionar</button></div>
+      </div>
+    </article>`).join("");
+  track.scrollLeft=0;
+}
+tabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;tab=b.dataset.t;renderTabs();renderCards()});
+track.addEventListener("click",e=>{const b=e.target.closest(".add");if(!b)return;add(MENU[tab][b.dataset.i])});
+$("#prev").onclick=()=>track.scrollBy({left:-320,behavior:"smooth"});
+$("#next").onclick=()=>track.scrollBy({left:320,behavior:"smooth"});
+renderTabs();renderCards();
+
+/* ---------- carrinho ---------- */
+/* o carrinho começa sempre vazio (não guarda itens de visitas anteriores) */
+let cart = [];
+try{localStorage.removeItem("calango_cart")}catch(e){}
+const save=()=>{};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),1800)}
+function add(p){
+  const f=cart.find(x=>x.n===p.n);
+  f?f.q++:cart.push({n:p.n,p:p.p,q:1,c:p.c,kind:p.kind,col:p.col,img:p.img});
+  const fc=$("#floatCart");fc.classList.remove("bump");void fc.offsetWidth;fc.classList.add("bump");
+  renderCart();toast(p.n+" adicionado ao pedido");
+}
+function renderCart(){
+  const qty=cart.reduce((s,i)=>s+i.q,0), sub=cart.reduce((s,i)=>s+i.q*i.p,0);
+  $("#count").textContent=qty;
+  $("#fcCount").textContent=qty;
+  $("#fcTotal").textContent=brl(sub);
+  const entrega = $("#cType").value==="Entrega" ? TAXA_ENTREGA : 0;
+  $("#total").textContent=brl(sub+(qty?entrega:0));
+  $("#finish").disabled=!qty;
+  $("#items").innerHTML = qty ? cart.map((i,k)=>`
+    <div class="item">
+      <div class="th${i.img?" photo":""}">${pic(i)}</div>
+      <div><h4>${i.n}</h4><small>${brl(i.p*i.q)}</small>
+        <div class="qty"><button data-a="-" data-k="${k}">−</button><span>${i.q}</span><button data-a="+" data-k="${k}">+</button></div></div>
+      <button class="rm" data-a="x" data-k="${k}" aria-label="Remover"><svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+    </div>`).join("") : `<p class="empty">Seu carrinho está vazio.<br>Escolha um burger no cardápio.</p>`;
+  save();
+}
+$("#items").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;const k=+b.dataset.k,a=b.dataset.a;
+  if(a==="+")cart[k].q++; else if(a==="-"){if(--cart[k].q<=0)cart.splice(k,1)} else cart.splice(k,1);
+  renderCart();
+});
+const open=v=>document.body.classList.toggle("cart-open",v);
+$("#openCart").onclick=()=>open(true);$("#floatCart").onclick=()=>open(true);$("#closeCart").onclick=()=>open(false);$("#overlay").onclick=()=>open(false);
+$("#cType").onchange=()=>{$("#cAddr").style.display=$("#cType").value==="Entrega"?"":"none";renderCart()};
+
+$("#finish").onclick=()=>{
+  const nome=$("#cName").value.trim(), tipo=$("#cType").value, end=$("#cAddr").value.trim();
+  if(!nome){toast("Informe seu nome");$("#cName").focus();return}
+  if(tipo==="Entrega"&&!end){toast("Informe o endereço de entrega");$("#cAddr").focus();return}
+  const sub=cart.reduce((s,i)=>s+i.q*i.p,0), taxa=tipo==="Entrega"?TAXA_ENTREGA:0;
+  let m=`*NOVO PEDIDO — TOP BURGUER*\n\n*Cliente:* ${nome}\n*Tipo:* ${tipo}\n`;
+  if(tipo==="Entrega")m+=`*Endereço:* ${end}\n`;
+  m+=`*Pagamento:* ${$("#cPay").value}\n\n*Itens:*\n`;
+  cart.forEach(i=>m+=`• ${i.q}x ${i.n} — ${brl(i.q*i.p)}\n`);
+  if(taxa)m+=`\nTaxa de entrega: ${brl(taxa)}`;
+  m+=`\n*Total: ${brl(sub+taxa)}*`;
+  const obs=$("#cObs").value.trim(); if(obs)m+=`\n\n*Obs:* ${obs}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`,"_blank");
+};
+$("#waDirect").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá, Top Burguer!")}`;
+renderCart();
+
+/* ---------- navegação ---------- */
+$("#burger").onclick=()=>$("#nav").classList.toggle("open");
+$("#nav").addEventListener("click",e=>{if(e.target.tagName==="A")$("#nav").classList.remove("open")});
+const links=[...document.querySelectorAll("nav a")];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main section[id]").forEach(s=>io.observe(s));
+$("#yr").textContent=new Date().getFullYear();
+$("#waFloat").href=$("#waDirect").href;
+addEventListener("scroll",()=>document.querySelector("header").classList.toggle("scrolled",scrollY>30),{passive:true});
+document.querySelectorAll(".about-in>*,.menu .wrap>*,.gallery .wrap>*,.unit .wrap>*,.contact .wrap>*,.feat").forEach(e=>e.classList.add("reveal"));
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(e=>ro.observe(e));
+</script>
+</body>
+</html>
